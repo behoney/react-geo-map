@@ -1,5 +1,7 @@
 # React Geojson Map
 
+> This is under development and not yet ready for production use.
+
 react-geojson-map is a library that enables declarative geospatial visualization using React Fiber.
 It seamlessly integrates React's component-based architecture with OpenLayers' mapping capabilities, providing developers with a robust solution for creating interactive and efficient map-based applications.
 

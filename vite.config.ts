@@ -7,8 +7,8 @@ export default defineConfig({
 	build: {
 		lib: {
 			entry: "src/lib/index.js",
-			name: "ReactGeoMap",
-			fileName: (format) => `react-geo-map.${format}.js`,
+			name: "react-geojson-map",
+			fileName: (format) => `react-geojson-map.${format}.js`,
 		},
 		rollupOptions: {
 			external: ["react", "react-dom", "ol", "react-reconciler"],

@@ -20,7 +20,10 @@
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "noFallthroughCasesInSwitch": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+
+    "outDir": "dist",
+    "declaration": true
   },
   "include": ["src/lib"]
 }

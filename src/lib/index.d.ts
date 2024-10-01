@@ -1,4 +1,5 @@
 import type React from "react";
+import type { Map as OlMap } from "ol";
 
 export interface GeoMapProps {
 	children?: React.ReactNode;
