@@ -1,6 +1,6 @@
-# ReactGeoMap
+# React Geojson Map
 
-react-geo-map is a library that enables declarative geospatial visualization using React Fiber.
+react-geojson-map is a library that enables declarative geospatial visualization using React Fiber.
 It seamlessly integrates React's component-based architecture with OpenLayers' mapping capabilities, providing developers with a robust solution for creating interactive and efficient map-based applications.
 
 ## Features
@@ -14,16 +14,16 @@ It seamlessly integrates React's component-based architecture with OpenLayers' m
 Make sure you have Node.js installed (Node 18 recommended). Install the package using:
 
 ```bash
-npm install react-geo-map
+npm install react-geojson-map
 ```
 
 ## Usage
 
-Here's a basic example of how to use react-geo-map:
+Here's a basic example of how to use react-geojson-map:
 
 ```jsx
 import React from "react";
-import { GeoMap, GeoDataSource } from "react-geo-map";
+import { GeoMap, GeoDataSource } from "react-geojson-map";
 
 const MyMap = () => (
   <GeoMap>
@@ -41,7 +41,7 @@ export default MyMap;
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/geo-react-fiber-mapper.git
+git clone https://github.com/behoney/react-geojson-map.git
 ```
 
 2. Install dependencies:

@@ -1,6 +1,6 @@
 {
-  "name": "react-geo-map",
-  "version": "0.1.0",
+  "name": "react-geojson-map",
+  "version": "0.1.1",
   "description": "A library for declarative geospatial visualization using React Fiber and OpenLayers",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
