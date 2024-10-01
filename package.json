@@ -1,0 +1,52 @@
+{
+  "name": "react-geo-map",
+  "version": "0.1.0",
+  "description": "A library for declarative geospatial visualization using React Fiber and OpenLayers",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/behoney/react-geo-map.git"
+  },
+  "keywords": [
+    "react",
+    "openlayers",
+    "geospatial",
+    "visualization",
+    "mapping"
+  ],
+  "author": "behoney",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "ol": "^10.2.1",
+    "react-reconciler": "^0.29.2"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@eslint/js": "^9.9.0",
+    "@playwright/test": "^1.47.2",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@types/react-reconciler": "^0.28.8",
+    "@vitejs/plugin-react": "^4.3.1",
+    "eslint": "^9.9.0",
+    "eslint-plugin-react-hooks": "^5.1.0-rc.0",
+    "eslint-plugin-react-refresh": "^0.4.9",
+    "globals": "^15.9.0",
+    "typescript": "^5.5.3",
+    "typescript-eslint": "^8.0.1",
+    "vite": "^5.4.1"
+  },
+  "files": [
+    "dist"
+  ]
+}

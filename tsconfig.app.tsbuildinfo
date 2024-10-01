@@ -1,0 +1,1 @@
+{"root":["./src/lib/datasource.ts","./src/lib/index.d.ts","./src/lib/render.ts","./src/lib/types.d.ts","./src/lib/components/geodatasource.ts","./src/lib/components/geomap.ts","./src/lib/components/popup.ts","./src/lib/utils/config.ts","./src/lib/utils/utils.ts"],"version":"5.6.2"}
