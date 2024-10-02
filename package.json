@@ -6,10 +6,13 @@
   "module": "dist/react-geojson-map.es.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
+    "dev": "npx astro dev",
+    "start": "npx astro dev",
+    "build": "npx astro build",
+    "preview": "npx astro preview",
+    "astro": "npx astro",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "test": "pnpm run dev & playwright test; kill $!"
   },
   "repository": {
     "type": "git",
@@ -25,12 +28,11 @@
   "author": "behoney",
   "license": "MIT",
   "peerDependencies": {
+    "ol": "^10.2.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "ol": "^10.2.1",
     "react-reconciler": "^0.29.2"
   },
-  "dependencies": {},
   "devDependencies": {
     "@eslint/js": "^9.9.0",
     "@playwright/test": "^1.47.2",
@@ -38,6 +40,7 @@
     "@types/react-dom": "^18.3.0",
     "@types/react-reconciler": "^0.28.8",
     "@vitejs/plugin-react": "^4.3.1",
+    "astro": "^4.15.10",
     "eslint": "^9.9.0",
     "eslint-plugin-react-hooks": "^5.1.0-rc.0",
     "eslint-plugin-react-refresh": "^0.4.9",
@@ -48,5 +51,8 @@
   },
   "files": [
     "dist"
-  ]
+  ],
+  "dependencies": {
+    "@astrojs/react": "^3.6.2"
+  }
 }
