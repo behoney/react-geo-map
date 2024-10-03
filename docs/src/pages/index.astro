@@ -4,7 +4,50 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="React GeoJSON Map Documentation">
-  <h1>Welcome to React GeoJSON Map Documentation</h1>
-  <p>This is the homepage for the documentation of react-geojson-map library.</p>
-  <LandingPage client:load />
+  <h1>React GeoJSON Map</h1>
+  <p>Welcome to <a href="https://github.com/behoney/react-geojson-map">react-geojson-map</a>, a library for declarative geospatial visualization using React Fiber and OpenLayers. It offers a robust solution for creating interactive and efficient map-based applications with React's component-based architecture.</p>
+
+  <h2>Key Features</h2>
+  <ul>
+    <li>Declarative components for defining map layers, sources, and interactions using JSX</li>
+    <li>CSS styling support for dynamic and themeable vector layer styling</li>
+    <li>Data source injection for streamlined integration and management of geospatial data sources</li>
+  </ul>
+
+  <p><strong>Note:</strong> This library is currently under development and not yet ready for production use.</p>
+
+  <h2>Usage</h2>
+  <div class="example-container">
+    <pre><code class="language-jsx">
+      {`
+import { GeoMap } from 'react-geojson-map';
+
+function App() {
+  return (
+  <div style="width: 300px; height: 300px;">
+    <GeoMap />
+  </div>
+  );
+}
+      `}
+    </code></pre>
+    <LandingPage client:load aria-label="Map example" />
+  </div>
+
+  <h2>Why Use React Reconciler?</h2>
+  <p>React GeoJSON Map leverages React Reconciler for superior performance and flexibility in geospatial visualization. This approach enables fine-grained control over rendering, custom logic aligned with OpenLayers, and a declarative API for map components. As a result, it offers efficient updates, smooth performance with large datasets, and an intuitive development experience.</p>
+
+  <p>By using React Reconciler, the library achieves efficient tree updates, better separation of concerns, and reduced overhead compared to React Context. This leads to more granular control over updates, cleaner code separation, and potentially fewer unnecessary re-renders. Consequently, React GeoJSON Map is ideal for building complex, interactive geospatial applications with enhanced performance and maintainability.</p>
+
+  <style>
+    .example-container {
+      display: flex;
+      flex-direction: row-reverse;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      width: 100%;
+      padding: 0 1rem;
+    }
+  </style>
 </Layout>
