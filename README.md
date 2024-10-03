@@ -52,6 +52,12 @@ git clone https://github.com/behoney/react-geojson-map.git
 pnpm install
 ```
 
+### Run tests
+
+```bash
+pnpm test
+```
+
 ## Contributing
 
 Contributions are welcome! Please open issues and submit pull requests for any enhancements or bug fixes. Make sure your code follows the project's coding standards and includes appropriate tests.
