@@ -3,12 +3,12 @@ import type { PlaywrightTestConfig } from "@playwright/test";
 const config: PlaywrightTestConfig = {
 	webServer: {
 		command: "pnpm run dev",
-		port: 5173,
+		port: 4321,
 		timeout: 120 * 1000,
 		reuseExistingServer: !process.env.CI,
 	},
 	use: {
-		baseURL: "http://localhost:5173",
+		baseURL: "http://localhost:4321",
 		viewport: { width: 640, height: 480 },
 	},
 	testDir: "./tests",
