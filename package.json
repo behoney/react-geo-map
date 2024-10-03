@@ -6,11 +6,8 @@
   "module": "dist/react-geojson-map.es.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "dev": "npx astro dev",
-    "start": "npx astro dev",
-    "build": "npx astro build",
-    "preview": "npx astro preview",
-    "astro": "npx astro",
+    "dev": "npx astro dev --root ./docs",
+    "build": "tsc -b && vite build",
     "lint": "eslint .",
     "test": "pnpm run dev & playwright test; kill $!"
   },
