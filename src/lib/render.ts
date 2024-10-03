@@ -58,17 +58,20 @@ function appendChildToContainer(container: OlMap, child: OlInstance) {
 			const applyStyles = () => {
 				const computedStyle = getComputedStyle(targetElement);
 				layer.setStyle({
-					"fill-color": computedStyle.getPropertyValue(
-						"--data-source-polygon-fill-color",
-					),
-					"stroke-color": computedStyle.getPropertyValue(
-						"--data-source-polygon-stroke-color",
-					),
-					"stroke-width": Number.parseFloat(
+					"fill-color":
 						computedStyle.getPropertyValue(
-							"--data-source-polygon-stroke-width",
-						),
-					),
+							"--data-source-polygon-fill-color",
+						) || "rgba(126, 188, 111, 0.1)",
+					"stroke-color":
+						computedStyle.getPropertyValue(
+							"--data-source-polygon-stroke-color",
+						) || "rgba(91, 124, 186, 1)",
+					"stroke-width":
+						Number.parseFloat(
+							computedStyle.getPropertyValue(
+								"--data-source-polygon-stroke-width",
+							),
+						) || 2,
 				});
 			};
 
