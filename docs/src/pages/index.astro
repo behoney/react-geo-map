@@ -1,16 +1,10 @@
 ---
+import LandingPage from '../examples/LandingPage.tsx';
+import Layout from '../layouts/Layout.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>React GeoJSON Map Documentation</title>
-	</head>
-	<body>
-		<h1>Welcome to React GeoJSON Map Documentation</h1>
-		<p>This is the homepage for the documentation of react-geojson-map library.</p>
-	</body>
-</html>
+<Layout title="React GeoJSON Map Documentation">
+  <h1>Welcome to React GeoJSON Map Documentation</h1>
+  <p>This is the homepage for the documentation of react-geojson-map library.</p>
+  <LandingPage client:load />
+</Layout>

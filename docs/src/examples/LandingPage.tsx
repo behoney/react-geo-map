@@ -1,16 +1,14 @@
 import React from 'react';
-import { GeoDataSource } from '../../../src/lib';
+import { GeoDataSource, GeoMap } from '../../../src/lib';
 
-const LandingPage: React.FC = () => {
+const DefaultMap: React.FC = () => {
   return (
-    <div>
-      <h1>Welcome to React Geojson Map</h1>
-      <p>A library for declarative geospatial visualization using React Fiber and OpenLayers.</p>
-      <GeoMap>
+    <div style={{ width: '300px', height: '300px' }}>
+      <GeoMap className='w-full h-full'>
         <GeoDataSource url="https://openlayers.org/data/geojson/countries.geojson" />
       </GeoMap>
     </div>
   );
 };
 
-export default LandingPage;
+export default DefaultMap;
