@@ -1,14 +1,11 @@
 import type React from "react";
-import type { Map as OlMap } from "ol";
 
 export interface GeoMapProps {
 	children?: React.ReactNode;
 	className?: string;
 }
 
-export type GeoMap = React.ForwardRefExoticComponent<
-	GeoMapProps & React.RefAttributes<OlMap>
->;
+export function GeoMap(props: GeoMapProps): React.ReactElement;
 
 export interface DataSourceProps {
 	url: string;
