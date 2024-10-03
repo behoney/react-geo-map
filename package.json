@@ -9,7 +9,8 @@
     "dev": "npx astro dev --root ./docs",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "test": "pnpm run dev & playwright test; kill $!"
+    "test": "pnpm run dev & playwright test; kill $!",
+    "build:docs": "npx astro build --root ./docs"
   },
   "repository": {
     "type": "git",
