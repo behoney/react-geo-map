@@ -16,10 +16,11 @@ import Layout from '../layouts/Layout.astro';
 
   <p><strong>Note:</strong> This library is currently under development and not yet ready for production use.</p>
 
-  <h2>Usage</h2>
+  <h2>Usage Example</h2>
   <div class="example-container">
-    <pre><code class="language-jsx">
-      {`
+    <pre>
+      <code class="language-jsx">
+{`
 import { GeoMap } from 'react-geojson-map';
 
 function App() {
@@ -29,10 +30,13 @@ function App() {
   </div>
   );
 }
-      `}
-    </code></pre>
+`}
+    </code>
+  </pre>
     <DefaultMapExample client:load aria-label="Map example" />
   </div>
+  <p>Try it live on <a href="https://shorturl.at/7XuDN" target="_blank" rel="noopener noreferrer">StackBlitz</a></p>
+
 
   <h2>Why Use React Reconciler?</h2>
   <p>React GeoJSON Map leverages React Reconciler for superior performance and flexibility in geospatial visualization. This approach enables fine-grained control over rendering, custom logic aligned with OpenLayers, and a declarative API for map components. As a result, it offers efficient updates, smooth performance with large datasets, and an intuitive development experience.</p>
