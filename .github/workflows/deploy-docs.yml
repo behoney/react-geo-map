@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - docs/deploy
 
 env:
   PUBLISH_DIR: ./docs/dist
