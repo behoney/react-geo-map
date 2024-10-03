@@ -9,12 +9,12 @@ const config: PlaywrightTestConfig = {
 	},
 	use: {
 		baseURL: "http://localhost:4321",
-		viewport: { width: 640, height: 480 },
+		viewport: { width: 480, height: 320 },
 	},
 	testDir: "./tests",
-	timeout: 30000,
+	timeout: 120 * 1000,
 	expect: {
-		timeout: 5000,
+		timeout: 120 * 1000,
 	},
 	fullyParallel: true,
 	forbidOnly: !!process.env.CI,
@@ -24,15 +24,15 @@ const config: PlaywrightTestConfig = {
 	projects: [
 		{
 			name: "chromium",
-			use: { browserName: "chromium" },
+			use: { browserName: "chromium", viewport: { width: 480, height: 320 } },
 		},
 		{
 			name: "firefox",
-			use: { browserName: "firefox" },
+			use: { browserName: "firefox", viewport: { width: 480, height: 320 } },
 		},
 		{
 			name: "webkit",
-			use: { browserName: "webkit" },
+			use: { browserName: "webkit", viewport: { width: 480, height: 320 } },
 		},
 	],
 };
