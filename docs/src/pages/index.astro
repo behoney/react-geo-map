@@ -26,14 +26,16 @@ import { GeoMap } from 'react-geojson-map';
 function App() {
   return (
   <div style="width: 300px; height: 300px;">
-    <GeoMap />
+  <GeoMap>
+    <GeoDataSource url="sample.geojson" />
+  </GeoMap>
   </div>
   );
 }
 `}
     </code>
   </pre>
-    <DefaultMapExample client:load aria-label="Map example" />
+    <DefaultMapExample client:only="react" aria-label="Map example" />
   </div>
   <p>Try it live on <a href="https://shorturl.at/7XuDN" target="_blank" rel="noopener noreferrer">StackBlitz</a></p>
 
