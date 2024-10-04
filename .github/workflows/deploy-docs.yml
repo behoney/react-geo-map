@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - docs/fix-error
 
 env:
   PUBLISH_DIR: ./docs/dist
