@@ -1,0 +1,1 @@
+import{j as e,G as a,a as s}from"./GeoMap.DEYsQ27-.js";import"./index.C0Tw76Oi.js";const r=()=>e.jsx("div",{style:{width:"300px",height:"300px"},children:e.jsx(a,{children:e.jsx(s,{url:"sample.geojson"})})});export{r as default};

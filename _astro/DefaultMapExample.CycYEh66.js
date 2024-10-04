@@ -1,1 +1,0 @@
-import{j as e,G as s,a}from"./GeoMap.DEYsQ27-.js";import"./index.C0Tw76Oi.js";const r=()=>e.jsx("div",{style:{width:"300px",height:"300px"},children:e.jsx(s,{className:"w-full h-full",children:e.jsx(a,{url:"https://openlayers.org/data/geojson/countries.geojson"})})});export{r as default};
