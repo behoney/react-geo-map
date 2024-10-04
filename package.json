@@ -4,6 +4,7 @@
   "description": "A library for declarative geospatial visualization using React Fiber and OpenLayers",
   "main": "dist/react-geojson-map.umd.js",
   "module": "dist/react-geojson-map.es.js",
+  "type": "module",
   "types": "dist/index.d.ts",
   "scripts": {
     "dev": "npx astro dev --root ./docs",
