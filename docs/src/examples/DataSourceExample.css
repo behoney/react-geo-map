@@ -2,6 +2,12 @@
   --data-source-polygon-fill-color: #f00;
   --data-source-polygon-stroke-color: #000;
   --data-source-polygon-stroke-width: 2;
+
+  /* NOTE:: below are the styles for the circle. */
+  --data-source-circle-radius: 10;
+  --data-source-circle-fill-color: #f00;
+  --data-source-circle-stroke-color: #000;
+  --data-source-circle-stroke-width: 2;
 }
 
 .data-source-example-options {

@@ -72,6 +72,23 @@ function appendChildToContainer(container: OlMap, child: OlInstance) {
                 "--data-source-polygon-stroke-width"
               )
             ) || 2,
+          "circle-radius":
+            Number.parseFloat(
+              computedStyle.getPropertyValue("--data-source-circle-radius")
+            ) || 10,
+          "circle-fill-color":
+            computedStyle.getPropertyValue("--data-source-circle-fill-color") ||
+            "rgba(255, 0, 0, 0.5)",
+          "circle-stroke-color":
+            computedStyle.getPropertyValue(
+              "--data-source-circle-stroke-color"
+            ) || "rgba(0, 0, 255, 1)",
+          "circle-stroke-width":
+            Number.parseFloat(
+              computedStyle.getPropertyValue(
+                "--data-source-circle-stroke-width"
+              )
+            ) || 2,
         });
       };
 
