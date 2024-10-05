@@ -1,4 +1,6 @@
 ---
+import "../styles/global.css";
+
 export interface Props {
   title: string;
 }
@@ -18,12 +20,12 @@ const { title } = Astro.props;
     <main>
       <slot />
     </main>
-    <footer>
-      <a href="/examples">go back to examples</a>
-    </footer>
+    <nav>
+      <a href="/examples">Back to examples</a>
+    </nav>
 
     <style>
-      footer {
+      nav {
         position: fixed;
         top: 0;
         right: 0;
