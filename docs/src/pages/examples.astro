@@ -1,0 +1,26 @@
+---
+const examples = await Astro.glob('./examples/*.astro');
+
+const pageList = examples.map(page => ({
+  name: page.file?.split('/').pop()?.replace('.astro', '') || 'Untitled',
+  path: page.url
+}));
+---
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Examples</title>
+</head>
+<body>
+  <h1>Examples</h1>
+  <ul>
+    {pageList.map((page) => (
+      <li>
+        <a href={page.path}>{page.name}</a>
+      </li>
+    ))}
+  </ul>
+</body>
+</html>

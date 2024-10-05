@@ -4,8 +4,8 @@ import VectorSource from "ol/source/Vector";
 import ReactDOM from "react-dom";
 import ReactReconciler from "react-reconciler";
 import {
-	ConcurrentRoot,
-	DefaultEventPriority,
+  ConcurrentRoot,
+  DefaultEventPriority,
 } from "react-reconciler/constants.js";
 import type { DataSourceProps } from "./components/GeoDataSource";
 import type { OlInstance, PopupInstance, SupportedLayerType } from "./types";
@@ -70,6 +70,23 @@ function appendChildToContainer(container: OlMap, child: OlInstance) {
             Number.parseFloat(
               computedStyle.getPropertyValue(
                 "--data-source-polygon-stroke-width"
+              )
+            ) || 2,
+          "circle-radius":
+            Number.parseFloat(
+              computedStyle.getPropertyValue("--data-source-circle-radius")
+            ) || 10,
+          "circle-fill-color":
+            computedStyle.getPropertyValue("--data-source-circle-fill-color") ||
+            "rgba(255, 0, 0, 0.5)",
+          "circle-stroke-color":
+            computedStyle.getPropertyValue(
+              "--data-source-circle-stroke-color"
+            ) || "rgba(0, 0, 255, 1)",
+          "circle-stroke-width":
+            Number.parseFloat(
+              computedStyle.getPropertyValue(
+                "--data-source-circle-stroke-width"
               )
             ) || 2,
         });
