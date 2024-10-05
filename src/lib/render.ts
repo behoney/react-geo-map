@@ -4,8 +4,8 @@ import VectorSource from "ol/source/Vector";
 import ReactDOM from "react-dom";
 import ReactReconciler from "react-reconciler";
 import {
-	ConcurrentRoot,
-	DefaultEventPriority,
+  ConcurrentRoot,
+  DefaultEventPriority,
 } from "react-reconciler/constants.js";
 import type { DataSourceProps } from "./components/GeoDataSource";
 import type { OlInstance, PopupInstance, SupportedLayerType } from "./types";

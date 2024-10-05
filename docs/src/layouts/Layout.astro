@@ -1,4 +1,6 @@
 ---
+import "../styles/global.css";
+
 export interface Props {
   title: string;
 }
@@ -22,69 +24,4 @@ const { title } = Astro.props;
       <p>&copy; {new Date().getFullYear()} <a href="https://github.com/behoney">behoney</a>. All rights reserved.</p>
     </footer>
   </body>
-  <style is:global>
-    :root {
-      --color-primary: #7ebc6f;     /* Green for vegetation */
-      --color-secondary: #5b7cba;   /* Blue for water bodies */
-      --color-accent: #f5d76e;      /* Yellow for highlighted areas */
-      --color-background: #f0f0f0;  /* Light gray for background */
-      --color-text: #333333;        /* Dark gray for text */
-      --color-text-light: #666666;  /* Medium gray for secondary text */
-      --color-road: #ffffff;        /* White for roads */
-      --color-building: #d9d0c9;    /* Light brown for buildings */
-      --color-code-background: #f4f4f4; /* Light gray for code background */
-      --color-code-text: #333333;   /* Dark gray for code text */
-    }
-
-    body {
-      font-family: 'Open Sans', Arial, sans-serif;
-      background-color: var(--color-background);
-      color: var(--color-text);
-      line-height: 1.6;
-    }
-
-    h1, h2, h3, h4, h5, h6 {
-      font-family: 'Roboto', 'Helvetica Neue', sans-serif;
-      font-weight: 700;
-      color: var(--color-primary);
-    }
-
-    p {
-      font-size: 16px;
-      margin-bottom: 1rem;
-    }
-
-    a {
-      color: var(--color-secondary);
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-
-    a:hover {
-      color: var(--color-accent);
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 1rem;
-    }
-    pre {
-      background-color: var(--color-code-background);
-      padding: 1rem;
-      border-radius: 5px;
-      overflow-x: auto;
-      margin-bottom: 1rem;
-    }
-
-    code {
-      font-family: 'Courier New', Courier, monospace;
-      background-color: var(--color-code-background);
-      color: var(--color-code-text);
-      padding: 0.2em 0.4em;
-      border-radius: 3px;
-      font-size: 0.9em;
-    }
-
-  </style>
 </html>
