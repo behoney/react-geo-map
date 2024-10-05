@@ -421,5 +421,19 @@
         ]
       }
     }
+    ,
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Sample Point"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -20,
+          20
+        ]
+      }
+    }
   ]
 }
