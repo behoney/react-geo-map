@@ -21,7 +21,7 @@ const { title } = Astro.props;
       <slot />
     </main>
     <nav>
-      <a href="/examples">Back to examples</a>
+      <a href={`${import.meta.env.BASE_URL}examples`}>Back to examples</a>
     </nav>
 
     <style>
