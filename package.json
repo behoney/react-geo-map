@@ -1,6 +1,6 @@
 {
   "name": "react-geojson-map",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "A library for declarative geospatial visualization using React Fiber and OpenLayers",
   "main": "dist/react-geojson-map.umd.js",
   "module": "dist/react-geojson-map.es.js",
@@ -12,6 +12,7 @@
     "test": "pnpm run dev & playwright test; kill $!",
     "build:docs": "npx astro build --root ./docs"
   },
+  "homepage": "https://behoney.github.io/react-geojson-map/",
   "repository": {
     "type": "git",
     "url": "https://github.com/behoney/react-geojson-map.git"
@@ -35,6 +36,7 @@
     "@astrojs/react": "^3.6.2",
     "@eslint/js": "^9.9.0",
     "@playwright/test": "^1.47.2",
+    "@types/node": "^22.7.4",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@types/react-reconciler": "^0.28.8",
@@ -50,7 +52,5 @@
   },
   "files": [
     "dist"
-  ],
-  "dependencies": {
-  }
+  ]
 }
