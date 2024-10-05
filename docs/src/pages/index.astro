@@ -1,5 +1,5 @@
 ---
-import DefaultMapExample from '../examples/DefaultMapExample';
+import HelloWorldExample from '../examples/HelloWorldExample';
 import Layout from '../layouts/Layout.astro';
 ---
 
@@ -27,7 +27,7 @@ function App() {
   return (
   <div style="width: 300px; height: 300px;">
   <GeoMap>
-    <GeoDataSource url="sample.geojson" />
+    <GeoDataSource url="hello-world.geojson" />
   </GeoMap>
   </div>
   );
@@ -35,7 +35,7 @@ function App() {
 `}
     </code>
   </pre>
-    <DefaultMapExample client:only="react" aria-label="Map example" />
+    <HelloWorldExample client:only="react" aria-label="Map example" />
   </div>
   <p>Try it live on <a href="https://shorturl.at/7XuDN" target="_blank" rel="noopener noreferrer">StackBlitz</a></p>
 
