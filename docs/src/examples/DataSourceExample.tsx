@@ -5,7 +5,7 @@ const DataSourceExample: React.FC = () => {
   return (
     <div style={{ width: "300px", height: "300px" }}>
       <GeoMap>
-        <GeoDataSource url="sample.geojson" />
+        <GeoDataSource url={`${import.meta.env.BASE_URL}sample.geojson`} />
       </GeoMap>
     </div>
   );
