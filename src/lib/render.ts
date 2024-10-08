@@ -137,8 +137,11 @@ function appendChildToContainer(container: OlMap, child: OlInstance) {
           const coordinate = event.coordinate;
           popupInstance.popupOverlay.setPosition(coordinate);
 
-          ReactDOM.render(
-            popupInstance.props.popupFunc(feature.getProperties()),
+          child.props.reactRoot.render(
+            ReactDOM.createPortal(
+              popupInstance.props.popupFunc(feature.getProperties()),
+              child.props.overlayPortalContainer
+            ),
             popupInstance.popupOverlay.getElement() as HTMLElement
           );
         } else {
