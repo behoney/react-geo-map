@@ -1,5 +1,4 @@
 import { createElement, useEffect, useRef } from "react";
-import { createPortal } from "react-dom";
 import { POPUP } from "../utils/config";
 
 export interface PopupProps<P> {
@@ -9,7 +8,6 @@ export interface PopupProps<P> {
 
 export default function Popup<P>(props: PopupProps<P>) {
   const overlayPortalContainer = useRef<HTMLDivElement | null>(null);
-
   if (!overlayPortalContainer.current) {
     overlayPortalContainer.current = document.createElement("div");
 
@@ -22,23 +20,27 @@ export default function Popup<P>(props: PopupProps<P>) {
     }
 
     document.body.appendChild(overlayPortalContainer.current);
-    createPortal(
-      props.popupFunc(props.properties),
-      overlayPortalContainer.current
-    );
+    console.log("div", overlayPortalContainer.current);
+
+    // createPortal(
+    //   props.popupFunc(props.properties),
+    //   overlayPortalContainer.current
+    // );
   }
 
   useEffect(() => {
     return () => {
-      document.body.removeChild(
-        overlayPortalContainer.current as HTMLDivElement
-      );
-      overlayPortalContainer.current = null;
+      if (overlayPortalContainer.current) {
+        document.body.removeChild(
+          overlayPortalContainer.current as HTMLDivElement
+        );
+        overlayPortalContainer.current = null;
+      }
     };
   }, []);
 
   // NOTE:: WIP
-  return null;
+  // return null;
 
   return createElement(POPUP, {
     ...props,

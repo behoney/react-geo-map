@@ -39,7 +39,7 @@ function createInstance(
         element: props.overlayPortalContainer,
       });
 
-      return { type, element: popupOverlay, props };
+      return { type, popupOverlay: popupOverlay, props };
     }
   } catch (error) {
     console.error("Error in createInstance", error);
@@ -121,10 +121,11 @@ function appendChildToContainer(container: OlMap, child: OlInstance) {
       });
     } else if (child.type === POPUP) {
       const popupInstance = child as PopupInstance;
+      console.log("container", container);
+
       container.addOverlay(popupInstance.popupOverlay);
 
-      if (!popupInstance)
-        console.error("popupInstance is null, this feature is WIP");
+      if (!popupInstance) console.error("This feature is WIP");
 
       container.on("singleclick", (event) => {
         const feature = container.forEachFeatureAtPixel(
@@ -135,10 +136,9 @@ function appendChildToContainer(container: OlMap, child: OlInstance) {
         if (feature) {
           const coordinate = event.coordinate;
           popupInstance.popupOverlay.setPosition(coordinate);
+
           ReactDOM.render(
-            popupInstance.popupFunc(
-              feature.getProperties()
-            ) as React.ReactElement,
+            popupInstance.props.popupFunc(feature.getProperties()),
             popupInstance.popupOverlay.getElement() as HTMLElement
           );
         } else {
