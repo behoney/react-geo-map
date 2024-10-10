@@ -10,6 +10,9 @@ export function GeoMap(props: GeoMapProps): React.ReactElement;
 export interface DataSourceProps {
   url: string;
   fitViewToData?: boolean;
+  onClick?: (properties: Record<string, any>) => void;
+  onMissed?: () => void;
+  onHover?: (properties: Record<string, any>) => void;
 }
 
 export function GeoDataSource(props: DataSourceProps): React.ReactElement;
