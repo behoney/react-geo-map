@@ -21,13 +21,14 @@ function createInstance(
   try {
     if (type === DATA_SOURCE) {
       if (typeof props.layerConstructor === "function") {
-        const geojsonFormat = new GeoJSON();
-        const layer = new props.layerConstructor({
-          source: new VectorSource({
-            url: props.url,
-            format: geojsonFormat,
-          }),
+        const source = new VectorSource({
+          url: props.url,
+          format: new GeoJSON(),
         });
+
+        const layer = new props.layerConstructor({
+          source,
+        }) as SupportedLayerType;
 
         return { type, element: layer, props };
       }
@@ -117,6 +118,26 @@ function appendChildToContainer(container: OlMap, child: OlInstance) {
               duration: 1000,
             });
           }
+
+          container.on("click", (event) => {
+            const features = container.getFeaturesAtPixel(event.pixel);
+            // TODO:: filter by source url
+            if (features.length > 0) {
+              child.props.onClick?.(features[0].getProperties());
+            } else {
+              child.props.onMissed?.();
+            }
+          });
+
+          container.on("pointermove", (event) => {
+            const features = container.getFeaturesAtPixel(event.pixel);
+            // TODO:: filter by source url
+            if (features.length > 0) {
+              child.props.onHover?.(features[0].getProperties());
+            } else {
+              child.props.onMissed?.();
+            }
+          });
         }
       });
     } else if (child.type === POPUP) {
@@ -154,10 +175,12 @@ function appendChildToContainer(container: OlMap, child: OlInstance) {
   }
 }
 function removeChild(parent: OlInstance | null, child: OlInstance | null) {
-  if (parent?.element instanceof OlMap && child) {
+  if (parent?.element instanceof OlMap && child.type === DATA_SOURCE) {
     (parent.element as OlMap).removeLayer(child.element as SupportedLayerType);
-  }
-  if (child?.element instanceof Overlay) {
+    (parent.element as OlMap).un("click", child.props.onClick);
+    (parent.element as OlMap).un("pointermove", child.props.onHover);
+    (parent.element as OlMap).un("pointermove", child.props.onMissed);
+  } else if (child?.element instanceof Overlay) {
     (child as PopupInstance).popupOverlay.setMap(null);
   }
 }
