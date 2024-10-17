@@ -125,7 +125,7 @@ function appendChildToContainer(container: OlMap, child: OlInstance) {
             if (features.length > 0) {
               child.props.onClick?.(features[0].getProperties());
             } else {
-              child.props.onMissed?.();
+              child.props.onClick?.();
             }
           });
 

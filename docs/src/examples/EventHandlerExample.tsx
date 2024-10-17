@@ -13,13 +13,13 @@ const EventHandlerExample: React.FC = () => {
             fitViewToData={true}
             url={`${import.meta.env.BASE_URL}sample.geojson`}
             onClick={(feature) => {
-              setClickedFeature(feature.name);
+              setClickedFeature(feature?.name ?? "");
             }}
             onMissed={() => {
               setHoveredFeature("");
             }}
             onHover={(feature) => {
-              setHoveredFeature(feature.name);
+              setHoveredFeature(feature?.name ?? "");
             }}
           />
         </GeoMap>
