@@ -1,7 +1,7 @@
 import { Map as OlMap } from "ol";
-import { observeCSSVariables } from "..";
 import { dataSourceStyles } from "../dataSourceStyleConfig";
 import { OlInstance, SupportedLayerType } from "../types";
+import { observeCSSVariables } from "../utils/utils";
 
 export const renderDataSource = (child: OlInstance, container: OlMap) => {
   const layer = child.element as SupportedLayerType;
