@@ -1,16 +1,16 @@
 import { Map as OlMap, Overlay } from "ol";
 import GeoJSON from "ol/format/GeoJSON";
 import VectorSource from "ol/source/Vector";
-import ReactDOM from "react-dom";
 import ReactReconciler from "react-reconciler";
 import {
   ConcurrentRoot,
   DefaultEventPriority,
 } from "react-reconciler/constants.js";
 import type { DataSourceProps } from "./components/GeoDataSource";
+import { renderDataSource } from "./renderers/dataSourceRenderer";
+import { renderPopup } from "./renderers/popupRenderer";
 import type { OlInstance, PopupInstance, SupportedLayerType } from "./types";
 import { DATA_SOURCE, POPUP } from "./utils/config";
-import { observeCSSVariables } from "./utils/utils";
 
 const roots = new WeakMap<OlMap, ReactReconciler.FiberRoot>();
 
@@ -21,13 +21,14 @@ function createInstance(
   try {
     if (type === DATA_SOURCE) {
       if (typeof props.layerConstructor === "function") {
-        const geojsonFormat = new GeoJSON();
-        const layer = new props.layerConstructor({
-          source: new VectorSource({
-            url: props.url,
-            format: geojsonFormat,
-          }),
+        const source = new VectorSource({
+          url: props.url,
+          format: new GeoJSON(),
         });
+
+        const layer = new props.layerConstructor({
+          source,
+        }) as SupportedLayerType;
 
         return { type, element: layer, props };
       }
@@ -51,113 +52,20 @@ function createInstance(
 function appendChildToContainer(container: OlMap, child: OlInstance) {
   if (container instanceof OlMap) {
     if (child.type === DATA_SOURCE) {
-      const layer = child.element as SupportedLayerType;
-
-      const targetElement = container.getTargetElement() as HTMLElement;
-
-      const applyStyles = () => {
-        const computedStyle = getComputedStyle(targetElement);
-        layer.setStyle({
-          "fill-color":
-            computedStyle.getPropertyValue(
-              "--data-source-polygon-fill-color"
-            ) || "rgba(126, 188, 111, 0.1)",
-          "stroke-color":
-            computedStyle.getPropertyValue(
-              "--data-source-polygon-stroke-color"
-            ) || "rgba(91, 124, 186, 1)",
-          "stroke-width":
-            Number.parseFloat(
-              computedStyle.getPropertyValue(
-                "--data-source-polygon-stroke-width"
-              )
-            ) || 2,
-          "circle-radius":
-            Number.parseFloat(
-              computedStyle.getPropertyValue("--data-source-circle-radius")
-            ) || 10,
-          "circle-fill-color":
-            computedStyle.getPropertyValue("--data-source-circle-fill-color") ||
-            "rgba(255, 0, 0, 0.5)",
-          "circle-stroke-color":
-            computedStyle.getPropertyValue(
-              "--data-source-circle-stroke-color"
-            ) || "rgba(0, 0, 255, 1)",
-          "circle-stroke-width":
-            Number.parseFloat(
-              computedStyle.getPropertyValue(
-                "--data-source-circle-stroke-width"
-              )
-            ) || 2,
-        });
-      };
-
-      container.addLayer(layer);
-
-      const observer = observeCSSVariables(targetElement, applyStyles);
-      observer.observe(targetElement, {
-        attributes: true,
-        attributeFilter: ["style", "class"],
-      });
-
-      applyStyles();
-
-      layer.getSource()?.once("change", () => {
-        if (layer.getSource()?.getState() === "ready") {
-          const extent = layer.getSource()?.getExtent();
-
-          if (
-            child.props?.fitViewToData &&
-            extent &&
-            !extent.every((value) => !Number.isFinite(value))
-          ) {
-            container.getView().fit(extent, {
-              padding: [20, 20, 20, 20],
-              maxZoom: 19,
-              duration: 1000,
-            });
-          }
-        }
-      });
+      renderDataSource(child, container);
     } else if (child.type === POPUP) {
-      const popupInstance = child as PopupInstance;
-      container.addOverlay(popupInstance.popupOverlay);
-
-      if (!popupInstance)
-        console.error("popupInstance is null, this feature is WIP");
-
-      container.on("singleclick", (event) => {
-        const feature = container.forEachFeatureAtPixel(
-          event.pixel,
-          (feature) => feature
-        );
-
-        if (feature) {
-          const coordinate = event.coordinate;
-          popupInstance.popupOverlay.setPosition(coordinate);
-          ReactDOM.render(
-            popupInstance.popupFunc(
-              feature.getProperties()
-            ) as React.ReactElement,
-            popupInstance.popupOverlay.getElement() as HTMLElement
-          );
-        } else {
-          popupInstance.popupOverlay?.setPosition(undefined);
-          if (popupInstance.popupOverlay?.getElement()) {
-            ReactDOM.unmountComponentAtNode(
-              popupInstance.popupOverlay.getElement() as HTMLElement
-            );
-          }
-        }
-      });
+      renderPopup(child, container);
     }
   }
 }
+
 function removeChild(parent: OlInstance | null, child: OlInstance | null) {
-  if (parent?.element instanceof OlMap && child) {
+  if (parent?.element instanceof OlMap && child.type === DATA_SOURCE) {
     (parent.element as OlMap).removeLayer(child.element as SupportedLayerType);
-  }
-  if (child?.element instanceof Overlay) {
+    (parent.element as OlMap).un("click", child.props.onClick);
+    (parent.element as OlMap).un("pointermove", child.props.onHover);
+    (parent.element as OlMap).un("pointermove", child.props.onMissed);
+  } else if (child?.element instanceof Overlay) {
     (child as PopupInstance).popupOverlay.setMap(null);
   }
 }

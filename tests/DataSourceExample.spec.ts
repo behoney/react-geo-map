@@ -1,23 +1,21 @@
 import { Page, expect, test } from "@playwright/test";
 
+const URL = "http://localhost:4321/examples/test-data-source";
+const TIMEOUT = 30000;
+
+const waitForMap = async (page: Page) => {
+  await page.waitForSelector(".ol-viewport", {
+    state: "visible",
+    timeout: TIMEOUT,
+  });
+  await page.waitForTimeout(1000);
+};
+
 test(
   "renders map correctly",
   async ({ page }: { page: Page }) => {
-    // Remove initial timeout and use navigation timeout instead
-    await page.goto("http://localhost:4321/examples/test-data-source", {
-      timeout: 30000,
-    });
-
-    // Wait for the map to be visible and stable
-    await page.waitForSelector(".ol-viewport", {
-      state: "visible",
-      timeout: 30000,
-    });
-
-    // Optional: Wait for any animations to complete
-    await page.waitForTimeout(1000);
-
-    // Take the screenshot and compare
+    await page.goto(URL, { timeout: TIMEOUT });
+    await waitForMap(page);
     expect(await page.screenshot()).toMatchSnapshot("map.png");
   },
   { timeout: 100000 }
