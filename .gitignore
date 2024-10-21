@@ -24,3 +24,6 @@ dist-ssr
 *.sw?
 tsconfig.app.tsbuildinfo
 test-results
+tsconfig.node.tsbuildinfo
+
+docs/.astro/settings.json
