@@ -1,1 +1,0 @@
-import{j as o,G as e}from"./GeoMap.Dd81DkbA.js";import{G as r}from"./GeoDataSource.ftERTWpJ.js";import"./index.C0Tw76Oi.js";const a=()=>o.jsx("div",{style:{width:"300px",height:"300px"},children:o.jsx(e,{children:o.jsx(r,{fitViewToData:!0,url:"hello-world.geojson"})})});export{a as default};
