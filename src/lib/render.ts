@@ -8,7 +8,7 @@ import {
 } from "react-reconciler/constants.js";
 import type { DataSourceProps } from "./components/GeoDataSource";
 import { renderDataSource } from "./renderers/dataSourceRenderer";
-import { renderPopup } from "./renderers/PopupRenderer";
+import { renderPopup } from "./renderers/popupRenderer";
 import type { OlInstance, PopupInstance, SupportedLayerType } from "./types";
 import { DATA_SOURCE, POPUP } from "./utils/config";
 
